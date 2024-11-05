@@ -28,14 +28,14 @@ for treatment in treatments:
     tumor_vol_data.extend(treatment_data["Tumor Volume (mm3)"].tolist())
     mouse_ids.extend(treatment_data["Mouse ID"].tolist())
 
-# Create a DataFrame with the collected data
+Create a DataFrame with the collected data
 tumor_df = pd.DataFrame({
     'Drug Regimen': treatment_labels,
     'Final Tumor Volume (mm3)': tumor_vol_data,
     'Mouse ID': mouse_ids
 })
 
-# Identify outliers for each treatment
+Identify outliers for each treatment
 outliers_dict = {}  # Dictionary to store outliers for each treatment
 
 for treatment in treatments:
@@ -50,9 +50,9 @@ for treatment in treatments:
     lower_bound = Q1 - (1.5 * IQR)
     upper_bound = Q3 + (1.5 * IQR)
     
-    # Identify outliers
+    Identify outliers
     outliers = treatment_data[(treatment_data["Final Tumor Volume (mm3)"] < lower_bound) | 
                               (treatment_data["Final Tumor Volume (mm3)"] > upper_bound)]
     
-    # Store outliers in the dictionary
+    Store outliers in the dictionary
     outliers_dict[treatment] = outliers
