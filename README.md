@@ -12,7 +12,7 @@ The executive team has tasked you with generating all of the tables and figures 
 - Calculate correlation and regression.
 - Submit your final analysis.
 
-- References:
+# References:
 - chatgpt for producing summary statistics in a single line with aggregation model.
   tumor_volume_per_regimen2= clean_combined_data.groupby("Drug Regimen")["Tumor Volume (mm3)"].agg(
     mean=np.mean,
@@ -28,14 +28,14 @@ for treatment in treatments:
     tumor_vol_data.extend(treatment_data["Tumor Volume (mm3)"].tolist())
     mouse_ids.extend(treatment_data["Mouse ID"].tolist())
 
-# Step 4: Create a DataFrame with the collected data
+# Create a DataFrame with the collected data
 tumor_df = pd.DataFrame({
     'Drug Regimen': treatment_labels,
     'Final Tumor Volume (mm3)': tumor_vol_data,
     'Mouse ID': mouse_ids
 })
 
-# Step 5: Identify outliers for each treatment
+# Identify outliers for each treatment
 outliers_dict = {}  # Dictionary to store outliers for each treatment
 
 for treatment in treatments:
